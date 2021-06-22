@@ -1,7 +1,7 @@
 #General
 
 analysis/
-data/
+cyclist-data/
 .DS_Store
 
 #Backend
