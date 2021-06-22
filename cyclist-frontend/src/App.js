@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import cyclistService from './services/cyclist.service';
-import Table from './components/Table';
 import Loading from './components/common/loading/Loading';
 import './App.css';
 import CustomSelect from './components/common/customSelect/CustomSelect';
+import Body from './components/body/Body';
 
 function App() {
   const [ locations, setLocations ] = useState([])
-  const [ selected, setSelected ] = useState({name: ''})
   const [ locationData, setLocationData ] = useState([]);
   const [ loading, setLoading ] = useState(false);
+  const options = locations.map((item) => ({value: item.name, label: item.name, id: item.id}))
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,33 +20,32 @@ function App() {
   }, []);
 
   const handleChange = async (selected) => {
-    console.log(selected);
-    setSelected(selected);
     setLoading(true);
     const newLocationData = await cyclistService.getLocationData(selected.id);
     setLocationData(newLocationData);
     setLoading(false);
   };
 
-  console.log(locationData);
+  const renderBody = () => {
+    if (loading) {
+      return <div className="loading-container"><Loading /></div>
+    }
+
+    if (locationData.length > 0) {
+      return <Body data={locationData}/>
+    }
+    return <></>
+  }
+
   return (
     <div>
+      <p>Valitse mittauspiste</p>
       <CustomSelect
-        labelId="location-selector"
-        value={selected.name}
         onChange={handleChange}
-        items={locations}
-        label="Valitse sijainti"
+        options={options}
       />
       {
-        loading
-          ? <div className="loading-container"><Loading /></div>
-          : <></>
-      }
-      {
-        !loading && locationData.length > 0
-          ? <Table locationData={locationData} /> 
-          : <></>
+        renderBody()            
       }
     </div>
   );

@@ -9,19 +9,19 @@ const Table = ({ locationData }) => {
             <tr >
               <th>Päivämäärä</th>
               <th>Aika</th>
-              <th>Pyöräilijöitä</th>
-              <th>Ilman Lämpötila</th>
-              <th>Sademäärä</th>
-              <th>Sateen Intensiteetti</th>
-              <th>Suhteellinen Kosteus</th>
-              <th>Pilvien Määrä</th>
-              <th>Tuulen Nopeus</th>
+              <th>Pyöräilijöitä (kpl)</th>
+              <th>Ilman Lämpötila (degC)</th>
+              <th>Sademäärä (mm)</th>
+              <th>Sateen Intensiteetti (mm/h)</th>
+              <th>Suhteellinen Kosteus (%)</th>
+              <th>Pilvien Määrä (1/8)</th>
+              <th>Tuulen Nopeus (m/s)</th>
             </tr>
           </thead>
           <tbody className="Table-body">
             {
               locationData.map((item) => (
-                <tr>
+                <tr key={item.sijainti}>
                   <td>{item.päivämäärä}</td>
                   <td>{item.aika}</td>
                   <td>{item.pyöräilijöitä}</td>

@@ -31,28 +31,39 @@ body {
   font-weight: 300;
 }
 
-.percent-raised {
-  color: #3cd483;
+.flex {
+  display: flex;
+  flex-flow: row wrap;
 }
 
-.percent-fallen {
-  color: #d64d96;
+.flex-vertical {
+  flex-direction: column;
 }
 
-.loading-container {
-  width: 100%;
+.flex-no-wrap {
+  flex-wrap: nowrap;
+}
+
+.flex-jc-sb {
+  justify-content: space-between;
+}
+
+.flex-jc-c {
+  justify-content: center;
+}
+
+.flex-ai-c {
+  align-items: center;
+}
+
+.sm-ver-margin {
+  margin: 30px 0;
+}
+
+.full-width {
+  width: 100%
+}
+
+.text-center {
   text-align: center;
-  margin: 40px auto;
-}
-
-.error {
-  width: 100%;
-  margin: 40px 0;
-  text-align: center;
-  color: #d64d96;
-}
-
-/* Remove close icon from input on IE */
-input::-ms-clear {
-  display: none;
 }

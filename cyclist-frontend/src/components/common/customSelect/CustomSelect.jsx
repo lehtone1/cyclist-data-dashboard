@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 const CustomSelect = ({
-  labelId, 
-  value, 
   onChange,
-  items,
-  label,
+  options,
+  defaultValue,
 }) => {
-  const options = items.map((item) => ({value: item.name, label: item.name, id: item.id}))
   
   const customStyles = {
     option: (provided, state) => ({
@@ -20,10 +17,11 @@ const CustomSelect = ({
       padding: 10,
       color: '#000'
     })
-  }
+  };
 
   return (
-    <Select 
+    <Select
+      defaultValue={defaultValue}
       options={options} 
       onChange={onChange}
       styles={customStyles}
